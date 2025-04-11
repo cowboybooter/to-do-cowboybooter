@@ -28,8 +28,14 @@ class Todo:
             or an error message if the task is empty.
         """
         if task:
-            self.tasks.append(task)
-            print(f"Task '{task}' added successfully.")
+            priority = priority.lower()
+
+            if priority not in ["low", "medium", "high"]:
+                print(f"Invalid priority '{priority}'. Using 'medium' instead.")
+                priority = "medium"
+            
+            self.tasks.append({"description": task, "priority": priority})
+            print(f"Task '{task}' with '{priority}' added successfully.")
         else:
             print("Task cannot be empty.")
 
