@@ -5,7 +5,7 @@ A simple command-line To-Do List application that allows users to manage tasks.
 
 from typing import List
 
-
+# adding comment
 class Todo:
     """A simple To-Do list application that manages tasks in memory.
 
@@ -27,9 +27,16 @@ class Todo:
             Prints a success message if the task is added,
             or an error message if the task is empty.
         """
+        priority = "NONE"
         if task:
-            self.tasks.append(task)
-            print(f"Task '{task}' added successfully.")
+            priority = priority.lower()
+
+            if priority not in ["low", "medium", "high"]:
+                print(f"Invalid priority '{priority}'. Using 'medium' instead.")
+                priority = "medium"
+            
+            self.tasks.append({"description": task, "priority": priority})
+            print(f"Task '{task}' with '{priority}' added successfully.")
         else:
             print("Task cannot be empty.")
 
