@@ -27,6 +27,7 @@ class Todo:
             Prints a success message if the task is added,
             or an error message if the task is empty.
         """
+        priority = "NONE"
         if task:
             priority = priority.lower()
 
